@@ -35,6 +35,8 @@ export async function loadEvents(params: LoadEventsParams): Promise<void> {
             file
           )} does not export a required name or execute property.`
         );
+
+        continue;
       }
 
       const eventType = event.options?.once ? 'once' : 'on';

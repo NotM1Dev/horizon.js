@@ -4,7 +4,7 @@
   "author": "M1",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "test": "turbo test",
     "lint": "turbo lint; prettier --check . --ignore-path=.prettierignore",
     "format": "prettier --write ."
   },

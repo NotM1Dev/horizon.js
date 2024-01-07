@@ -4,11 +4,10 @@
   "description": "A command/event handler for your discord.js bots.",
   "scripts": {
     "build": "tsup",
-    "test": "tsx ./test/index.ts"
+    "test": "node --watch --env-file=./test/.env ./test/index.js"
   },
   "dependencies": {
-    "discord.js": "^14.14.1",
-    "glob": "^10.3.10"
+    "discord.js": "^14.14.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
