@@ -1,3 +1,5 @@
-# Turborepo Skeleton
+# horizon.js
 
-This is a minimal starter turborepo, for smaller projects.
+## Summary
+
+A discord.js command/event handler.
