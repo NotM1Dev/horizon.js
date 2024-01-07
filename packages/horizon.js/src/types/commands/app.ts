@@ -1,5 +1,4 @@
 import type {
-  Client,
   ContextMenuCommandBuilder,
   SlashCommandBuilder,
   RESTPostAPIApplicationCommandsJSONBody,
@@ -72,3 +71,12 @@ export interface MessageContextMenuCommand extends BaseContextMenuCommand {
 export interface UserContextMenuCommand extends BaseContextMenuCommand {
   execute: (context: UserContextMenuCommandContext) => any;
 }
+
+/**
+ * Represents either a slash command, message context menu command,
+ * or a user context menu command.
+ */
+export type AnyApplicationCommand =
+  | SlashCommand
+  | MessageContextMenuCommand
+  | UserContextMenuCommand;
