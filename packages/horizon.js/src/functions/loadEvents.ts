@@ -1,6 +1,5 @@
 import type { Client } from 'discord.js';
 import type { Event } from '../types';
-
 import { allowedExtensions } from '../common';
 
 import fs from 'node:fs/promises';
