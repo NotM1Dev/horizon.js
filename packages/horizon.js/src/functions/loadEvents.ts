@@ -6,7 +6,7 @@ import { allowedExtensions } from '../common';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-interface LoadEventsParams {
+export interface LoadEventsParams {
   client: Client;
   directory: string;
 }
