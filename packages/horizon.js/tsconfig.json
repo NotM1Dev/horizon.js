@@ -1,0 +1,4 @@
+{
+  "extends": "@horizon-js/internals/tsconfig.json",
+  "include": ["src"]
+}

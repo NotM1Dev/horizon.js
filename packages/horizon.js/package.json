@@ -1,0 +1,22 @@
+{
+  "name": "horizon.js",
+  "version": "0.0.1",
+  "description": "A command/event handler for your discord.js bots.",
+  "scripts": {
+    "build": "tsup",
+    "test": "tsx ./test/index.ts"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "glob": "^10.3.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0"
+  },
+  "peerDependencies": {
+    "discord.js": "^14"
+  }
+}
