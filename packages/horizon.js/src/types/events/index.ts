@@ -11,8 +11,7 @@ export interface Event {
   name: keyof ClientEvents | (string & {});
 
   /**
-   * Callback to execute when this event
-   * is emitted by the client.
+   * Callback to execute when this event is emitted by the client.
    */
   execute: (...args: any[]) => void;
 
