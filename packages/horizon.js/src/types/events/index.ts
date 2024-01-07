@@ -1,5 +1,4 @@
-import type { Awaitable, ClientEvents } from 'discord.js';
-import type { Func } from '../index';
+import type { ClientEvents } from 'discord.js';
 
 /**
  * Represents a client event object.
@@ -15,7 +14,7 @@ export interface Event {
    * Callback to execute when this event
    * is emitted by the client.
    */
-  execute: Awaitable<Func<void>>;
+  execute: (...args: any[]) => void;
 
   /**
    * Optional configuration for this event.

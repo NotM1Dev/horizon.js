@@ -11,7 +11,7 @@ interface LoadEventsParams {
   dir: string;
 }
 
-export async function loadEvents(params: LoadEventsParams) {
+export async function loadEvents(params: LoadEventsParams): Promise<void> {
   const { client, dir } = params;
   const folders = await fs.readdir(dir);
 
@@ -21,11 +21,26 @@ export async function loadEvents(params: LoadEventsParams) {
     );
 
     for (const file of files) {
-      const event: Event & { default?: Event } = await import(
-        path.join(dir, folder, file)
-      );
+      let event: Event & { default?: Event } = await import(path.join(dir, folder, file));
 
-      // TODO: handler
+      if (event.default) {
+        event = event.default;
+      }
+
+      if (!event.name || !event.execute) {
+        process.emitWarning(
+          `Event module located at ${path.join(
+            dir,
+            folder,
+            file
+          )} does not export a required name or execute property.`
+        );
+      }
+
+      const eventType = event.options?.once ? 'once' : 'on';
+      client[eventType](event.name, event.execute);
+
+      return;
     }
   }
 }
