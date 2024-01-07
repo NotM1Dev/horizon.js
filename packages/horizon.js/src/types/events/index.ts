@@ -13,7 +13,7 @@ export interface Event {
   /**
    * Callback to execute when this event is emitted by the client.
    */
-  execute: (...args: any[]) => void;
+  execute: (...args: any[]) => any;
 
   /**
    * Optional configuration for this event.
