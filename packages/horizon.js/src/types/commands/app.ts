@@ -4,7 +4,8 @@ import type {
   RESTPostAPIApplicationCommandsJSONBody,
   ChatInputCommandInteraction,
   MessageContextMenuCommandInteraction,
-  UserContextMenuCommandInteraction
+  UserContextMenuCommandInteraction,
+  ContextMenuCommandInteraction
 } from 'discord.js';
 
 import type { BaseCommandContext, BaseContextMenuCommand } from './index';
@@ -76,7 +77,17 @@ export interface UserContextMenuCommand extends BaseContextMenuCommand {
  * Represents either a slash command, message context menu command,
  * or a user context menu command.
  */
-export type AnyApplicationCommand =
+export type AnyApplicationCommand = (
   | SlashCommand
   | MessageContextMenuCommand
-  | UserContextMenuCommand;
+  | UserContextMenuCommand
+) & {
+  interaction: AnyApplicationCommandInteraction;
+};
+
+/**
+ * Represents any application command's interaction.
+ */
+export type AnyApplicationCommandInteraction =
+  | ChatInputCommandInteraction
+  | ContextMenuCommandInteraction;
