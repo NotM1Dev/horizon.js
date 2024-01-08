@@ -1,5 +1,7 @@
 # horizon.js
 
+> ❗ This package is still in beta! Please report any bugs you find.
+
 ## Summary
 
 A discord.js command & event handler.
