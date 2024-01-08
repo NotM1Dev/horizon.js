@@ -1,7 +1,5 @@
-// @ts-check
-
 const { Client } = require('discord.js');
-const { loadEvents } = require('../dist');
+const { loadEvents, loadCommands } = require('../dist/index');
 const path = require('node:path');
 
 const client = new Client({
@@ -10,7 +8,14 @@ const client = new Client({
 
 loadEvents({
   client,
-  dir: path.join(__dirname, 'events')
+  directory: path.join(__dirname, 'events')
+});
+
+loadCommands({
+  client,
+  appCommands: {
+    directory: path.join(__dirname, 'commands', 'app')
+  }
 });
 
 client.login(process.env.DISCORD_TOKEN);
