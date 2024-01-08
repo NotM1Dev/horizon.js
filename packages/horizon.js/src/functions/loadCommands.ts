@@ -29,11 +29,19 @@ export async function loadCommands(params: LoadCommandsParams): Promise<void> {
     const commands = new Collection<string, AnyApplicationCommand>();
 
     for (const folder of folders) {
+      if (folder.startsWith('_')) {
+        continue;
+      }
+
       const files = (await fs.readdir(path.join(directory, folder))).filter((file) =>
         allowedExtensions.some((ext) => file.endsWith(ext))
       );
 
       for (const file of files) {
+        if (file.startsWith('_')) {
+          continue;
+        }
+
         let command: AnyApplicationCommand & { default?: AnyApplicationCommand } =
           await import(path.join(directory, folder, file));
 
