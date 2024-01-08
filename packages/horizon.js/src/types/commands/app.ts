@@ -1,3 +1,4 @@
+import type { BaseCommandContext, BaseContextMenuCommand } from './index';
 import type {
   ContextMenuCommandBuilder,
   SlashCommandBuilder,
@@ -7,8 +8,6 @@ import type {
   UserContextMenuCommandInteraction,
   ContextMenuCommandInteraction
 } from 'discord.js';
-
-import type { BaseCommandContext, BaseContextMenuCommand } from './index';
 
 /**
  * Context for the execute() method in slash commands.
@@ -77,17 +76,22 @@ export interface UserContextMenuCommand extends BaseContextMenuCommand {
  * Represents either a slash command, message context menu command,
  * or a user context menu command.
  */
-export type AnyApplicationCommand = (
-  | SlashCommand
-  | MessageContextMenuCommand
-  | UserContextMenuCommand
-) & {
-  interaction: AnyApplicationCommandInteraction;
+export type AnyApplicationCommand = {
+  data: AnyContextMenuCommandData;
+  execute: (context: AnyApplicationCommandContext) => any;
 };
 
 /**
- * Represents any application command's interaction.
+ * Any application command's interaction.
  */
 export type AnyApplicationCommandInteraction =
   | ChatInputCommandInteraction
   | ContextMenuCommandInteraction;
+
+/**
+ * Context for slash & context menu commands.
+ */
+export type AnyApplicationCommandContext =
+  | SlashCommandContext
+  | MessageContextMenuCommandContext
+  | UserContextMenuCommandContext;
