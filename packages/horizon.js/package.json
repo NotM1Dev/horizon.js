@@ -2,6 +2,9 @@
   "name": "horizon.js",
   "version": "0.0.2",
   "description": "A command/event handler for your discord.js bots.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "lint": "tsc --noEmit true",
