@@ -4,6 +4,7 @@
   "description": "A command/event handler for your discord.js bots.",
   "scripts": {
     "build": "tsup",
+    "lint": "tsc --noEmit true",
     "test": "node --watch --env-file=./test/.env ./test/index.js"
   },
   "files": [
