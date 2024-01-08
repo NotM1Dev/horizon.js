@@ -23,7 +23,7 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: 📦 Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-lockfile
 
       - name: ✨ Lint
         run: pnpm lint
