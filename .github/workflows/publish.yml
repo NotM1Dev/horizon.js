@@ -26,12 +26,12 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: ✨ Lint
-        run: pnpm run lint
+        run: pnpm lint
 
       - name: 🛠️ Build
-        run: pnpm run build
+        run: pnpm build
 
       - name: 🚀 Deploy
-        run: pnpm run deploy:horizon.js
+        run: pnpm deploy:horizon.js
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
