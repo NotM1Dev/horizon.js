@@ -6,6 +6,11 @@
     "build": "tsup",
     "test": "node --watch --env-file=./test/.env ./test/index.js"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "dependencies": {
     "discord.js": "^14.14.1"
   },
