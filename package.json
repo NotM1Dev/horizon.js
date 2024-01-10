@@ -8,7 +8,7 @@
     "lint": "turbo lint; prettier --check . --ignore-path=.prettierignore",
     "format": "prettier --write .",
     "deploy:horizon.js:stable": "cd ./packages/horizon.js && pnpm publish --no-git-checks",
-    "deploy:horizon.js:canary": "cd ./packages/horizon.js && pnpm publish --access public --tag canary"
+    "deploy:horizon.js:canary": "cd ./packages/horizon.js && pnpm publish --no-git-checks --access public --tag canary"
   },
   "devDependencies": {
     "@horizon-js/internals": "workspace:*",
