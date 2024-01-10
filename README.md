@@ -25,16 +25,14 @@ const client = new Client({
   // ...
 });
 
-new Handler({
+new Handler(client, {
   commands: {
     app: {
       directory: path.join(__dirname, 'commands', 'app')
     }
   },
   events: {
-    client: {
-      directory: path.join(__dirname, 'events')
-    }
+    directory: path.join(__dirname, 'events')
   }
 });
 
