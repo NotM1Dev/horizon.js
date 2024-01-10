@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "noUncheckedIndexedAccess": true,
-    "removeComments": true,
+    "removeComments": false,
     "verbatimModuleSyntax": true,
     "allowJs": true,
     "strict": true,
