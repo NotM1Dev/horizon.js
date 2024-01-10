@@ -3,7 +3,7 @@ name: 🛠️ Canary Build
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'packages/horizon.js/**'
 
