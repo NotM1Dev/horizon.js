@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "lint": "tsc --noEmit true",
+    "lint": "tsc --noEmit",
     "dev": "node --watch --env-file=./test/.env ./test/src"
   },
   "license": "MIT",
