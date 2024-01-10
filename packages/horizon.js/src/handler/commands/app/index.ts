@@ -1,1 +1,1 @@
-export * from './functions/loadCommands';
+export * from './functions/loadAppCommands';

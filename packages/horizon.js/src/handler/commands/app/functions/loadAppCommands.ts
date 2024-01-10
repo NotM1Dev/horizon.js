@@ -11,15 +11,15 @@ import { allowedExtensions } from '../../../../common';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-interface LoadAppCommandsProps extends AppCommandsConfig {
+export interface LoadAppCommandsParams extends AppCommandsConfig {
   client: Client;
 }
 
-export async function loadAppCommands({ directory, client }: LoadAppCommandsProps) {
-  const folders = await fs.readdir(directory);
-
+export async function loadAppCommands({ directory, client }: LoadAppCommandsParams) {
   const commandsArray: AnyApplicationCommandData[] = [];
   const commands = new Collection<string, AnyApplicationCommand>();
+
+  const folders = await fs.readdir(directory);
 
   for (const folder of folders) {
     if (folder.startsWith('_')) {
