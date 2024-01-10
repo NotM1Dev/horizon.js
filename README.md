@@ -1,6 +1,6 @@
-# horizon.js
-
-> ❗ This package is still in beta! Please report any bugs you find.
+<div align="center">
+  <h1>horizon.js</h1>
+</div>
 
 ## Summary
 
