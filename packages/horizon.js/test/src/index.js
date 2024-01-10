@@ -1,5 +1,5 @@
 const { Client } = require('discord.js');
-const { Handler } = require('../dist/index');
+const { Handler } = require('../../dist/index');
 const path = require('node:path');
 
 const client = new Client({
