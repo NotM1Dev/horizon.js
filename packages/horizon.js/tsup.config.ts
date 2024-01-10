@@ -8,6 +8,7 @@ export default defineConfig({
   minifySyntax: true,
   minifyWhitespace: true,
   keepNames: true,
+  treeshake: 'smallest',
   target: 'esnext',
   outDir: './dist',
   clean: true,
