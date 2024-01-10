@@ -1,4 +1,4 @@
-import type { BaseCommandContext, BaseContextMenuCommand } from './common';
+import type { BaseCommandContext } from './common';
 import type {
   ContextMenuCommandBuilder,
   SlashCommandBuilder,
@@ -11,6 +11,10 @@ import type {
 
 export interface BaseCommandsConfig {
   directory: string;
+}
+
+export interface BaseContextMenuCommand {
+  data: AnyContextMenuCommandData;
 }
 
 export interface AppCommandsConfig extends BaseCommandsConfig {}
