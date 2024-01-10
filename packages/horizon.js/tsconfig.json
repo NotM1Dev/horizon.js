@@ -1,4 +1,10 @@
 {
   "extends": "@horizon-js/internals/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
   "include": ["src"]
 }

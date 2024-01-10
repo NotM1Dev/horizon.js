@@ -1,6 +1,6 @@
 import type { Client } from 'discord.js';
 import type { HandlerData, HandlerOptions } from './types';
-import { loadEvents, loadCommands } from './index';
+import { loadEvents, loadAppCommands } from './index';
 
 /**
  * @since v0.1.0
@@ -42,9 +42,9 @@ export class Handler {
     const { client, events, commands } = this.#data;
 
     if (commands?.app?.directory) {
-      await loadCommands({
+      await loadAppCommands({
         client,
-        appCommands: commands.app
+        ...commands.app
       });
     }
 

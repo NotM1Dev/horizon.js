@@ -3,19 +3,19 @@ import type {
   AnyApplicationCommandContext,
   AnyApplicationCommandData,
   AppCommandsConfig
-} from '../../../../types';
+} from '@/types';
 
 import { Collection, type Client } from 'discord.js';
-import { allowedExtensions } from '../../../../common';
+import { allowedExtensions } from '@/common';
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-export interface LoadAppCommandsParams extends AppCommandsConfig {
+export interface LoadAppCommandsProps extends AppCommandsConfig {
   client: Client;
 }
 
-export async function loadAppCommands({ directory, client }: LoadAppCommandsParams) {
+export async function loadAppCommands({ directory, client }: LoadAppCommandsProps) {
   const commandsArray: AnyApplicationCommandData[] = [];
   const commands = new Collection<string, AnyApplicationCommand>();
 

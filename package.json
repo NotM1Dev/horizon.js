@@ -1,5 +1,6 @@
 {
   "name": "@horizon-js/workspace",
+  "version": "0.0.0",
   "private": true,
   "author": "M1",
   "scripts": {

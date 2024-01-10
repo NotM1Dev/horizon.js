@@ -1,4 +1,4 @@
-import type { BaseCommandContext } from './common';
+import type { BaseCommandContext, BaseCommandsConfig } from './common';
 import type {
   ContextMenuCommandBuilder,
   SlashCommandBuilder,
@@ -8,10 +8,6 @@ import type {
   UserContextMenuCommandInteraction,
   ContextMenuCommandInteraction
 } from 'discord.js';
-
-export interface BaseCommandsConfig {
-  directory: string;
-}
 
 export interface BaseContextMenuCommand {
   data: AnyContextMenuCommandData;
