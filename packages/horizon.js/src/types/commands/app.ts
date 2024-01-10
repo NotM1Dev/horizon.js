@@ -9,6 +9,13 @@ import type {
   ContextMenuCommandInteraction
 } from 'discord.js';
 
+export interface BaseCommandsConfig {
+  directory: string;
+}
+
+export interface AppCommandsConfig extends BaseCommandsConfig {}
+export interface MessageCommandsConfig extends BaseCommandsConfig {}
+
 /**
  * Context for the execute() method in slash commands.
  */

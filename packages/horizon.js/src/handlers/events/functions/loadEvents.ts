@@ -1,6 +1,6 @@
 import type { Client } from 'discord.js';
-import type { Event } from '../types';
-import { allowedExtensions } from '../common';
+import type { Event } from '../../../types';
+import { allowedExtensions } from '../../../common';
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -10,8 +10,7 @@ export interface LoadEventsParams {
   directory: string;
 }
 
-export async function loadEvents(params: LoadEventsParams): Promise<void> {
-  const { client, directory } = params;
+export async function loadEvents({ client, directory }: LoadEventsParams): Promise<void> {
   const folders = await fs.readdir(directory);
 
   for (const folder of folders) {
