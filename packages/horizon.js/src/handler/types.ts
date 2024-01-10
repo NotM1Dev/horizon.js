@@ -30,6 +30,12 @@ export interface HandlerOptions {
   };
 }
 
+/**
+ * Private Handler data.
+ */
 export interface HandlerData extends HandlerOptions {
+  /**
+   * The client that instantiated this.
+   */
   client: Client;
 }
