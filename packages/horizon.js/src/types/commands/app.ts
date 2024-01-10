@@ -1,4 +1,4 @@
-import type { BaseCommandContext, BaseContextMenuCommand } from './index';
+import type { BaseCommandContext, BaseContextMenuCommand } from './common';
 import type {
   ContextMenuCommandBuilder,
   SlashCommandBuilder,
