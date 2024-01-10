@@ -1,0 +1,66 @@
+name: 🛠️ Canary Build
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages/horizon.js/**'
+
+jobs:
+  release:
+    name: Publish (Canary)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: 📚 Checkout
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+
+      - name: 📦 Dependencies
+        run: pnpm install
+
+      - name: ✨ Lint
+        run: pnpm lint
+
+      - name: 🛠️ Build
+        run: pnpm build
+
+      - name: 🔢 Update Version
+        run: |
+          cd packages/horizon.js
+          node -e "const pkg = require('./package.json'); \
+          const newVersion = pkg.version + '-canary.' + new Date().toISOString().replace(/[:\-T]/g, '').substr(0,14); \
+          pkg.version = newVersion; \
+          require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));"
+        env:
+          DEBIAN_FRONTEND: noninteractive
+
+      - name: 🚚 Publish
+        run: pnpm run deploy:horizon.js:canary
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: 🚫 Deprecate Previous Canary Version
+        run: |
+          PACKAGE_NAME=$(node -e "console.log(require('./packages/horizon.js/package.json').name);")
+          ALL_VERSIONS=$(npm info $PACKAGE_NAME versions -json)
+          VERSION_TO_DEPRECATE=$(echo $ALL_VERSIONS | node -e "
+              const versions = JSON.parse(require('fs').readFileSync('/canary/stdin', 'utf-8'));
+              const canaryVersions = versions.filter(v => v.includes('-canary.'));
+              const versionToDeprecate = canaryVersions[canaryVersions.length - 2];
+              console.log(versionToDeprecate);
+          ")
+          echo Deprecating canary version: $VERSION_TO_DEPRECATE
+          npm deprecate $PACKAGE_NAME@$VERSION_TO_DEPRECATE "unsupported canary version"
+
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
