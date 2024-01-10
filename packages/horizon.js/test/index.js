@@ -1,20 +1,19 @@
 const { Client } = require('discord.js');
-const { loadEvents, loadCommands } = require('../dist/index');
+const { Handler } = require('../dist/index');
 const path = require('node:path');
 
 const client = new Client({
   intents: ['Guilds', 'GuildMembers', 'GuildMembers', 'MessageContent']
 });
 
-loadEvents({
-  client,
-  directory: path.join(__dirname, 'events')
-});
-
-loadCommands({
-  client,
-  appCommands: {
-    directory: path.join(__dirname, 'commands', 'app')
+new Handler(client, {
+  commands: {
+    app: {
+      directory: path.join(__dirname, 'commands', 'app')
+    }
+  },
+  events: {
+    directory: path.join(__dirname, 'events')
   }
 });
 

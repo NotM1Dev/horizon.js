@@ -1,5 +1,5 @@
 // Handlers
-export * from './handlers';
+export * from './handler';
 
 // Typings
 export type * from './types';
